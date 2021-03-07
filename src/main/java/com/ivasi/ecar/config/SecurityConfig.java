@@ -56,6 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 antMatchers("/user/**").hasRole("USER").
                 antMatchers("/assistant/**").hasRole("ASSISTANT").
                 and().
+                headers().frameOptions().disable(). // ---- For H2 !!! ----
+                and().
                 formLogin().
                 loginPage("/login").permitAll().
                 loginProcessingUrl("/login").
