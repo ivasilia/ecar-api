@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UsersServiceImpl implements UserService {
+public class UserServiceImpl implements UserService {
 
     private final UserRepo userRepo;
     private final PasswordEncoder encoder;
 
     @Autowired
-    public UsersServiceImpl(UserRepo userRepo, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepo userRepo, PasswordEncoder encoder) {
         this.userRepo = userRepo;
         this.encoder = encoder;
     }
@@ -64,7 +64,7 @@ public class UsersServiceImpl implements UserService {
 
     @Override
     public UserEntity getUserByUsername(String username) {
-        return null;
+        return this.userRepo.findByUsername(username).orElse(null);
     }
 
 }

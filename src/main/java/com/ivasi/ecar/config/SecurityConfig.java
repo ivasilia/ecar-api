@@ -52,28 +52,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 authorizeRequests().
                 antMatchers("/**").permitAll().
 //                antMatchers("/", "/login", "/register").permitAll().
-                antMatchers("/admin/**").hasRole("ADMIN").
-                antMatchers("/user/**").hasRole("USER").
-                antMatchers("/assistant/**").hasRole("ASSISTANT").
+//                antMatchers("/admin/**").hasRole("ADMIN").
+//                antMatchers("/user/**").hasRole("USER").
+//                antMatchers("/assistant/**").hasRole("ASSISTANT").
                 and().
                 headers().frameOptions().disable(). // ---- For H2 !!! ----
-                and().
-                formLogin().
-                loginPage("/login").permitAll().
-                loginProcessingUrl("/login").
-                failureForwardUrl("/login-error").
-                successForwardUrl("/index").
-                defaultSuccessUrl("/").
+//                and().
+//                formLogin().
+//                loginPage("/login").permitAll().
+//                loginProcessingUrl("/api/login").
+//                failureForwardUrl("/api/login-error").
+//                successForwardUrl("/index").
+//                defaultSuccessUrl("/").
 //        successHandler(authSuccessHandler).
 //                usernameParameter("username").
 //                passwordParameter("password").
-                and().
-                logout().
-                logoutRequestMatcher(new AntPathRequestMatcher("/_leaving")).
-//                logoutUrl("/_leaving").
-        logoutSuccessUrl("/").
-                invalidateHttpSession(true).
-                deleteCookies("JSESSIONID").
+//                and().
+//                logout().
+//                logoutRequestMatcher(new AntPathRequestMatcher("/_leaving")).
+////                logoutUrl("/_leaving").
+//                logoutSuccessUrl("/").
+//                invalidateHttpSession(true).
+//                deleteCookies("JSESSIONID").
                 and().
                 csrf().disable();
     }
