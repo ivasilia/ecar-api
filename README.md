@@ -1,3 +1,3 @@
 # ecar-api
 
-E-car sharing management api.
+Fun e-car sharing management api with Spring Boot, Spring Security and JWT.
