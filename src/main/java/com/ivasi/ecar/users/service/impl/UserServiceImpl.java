@@ -1,9 +1,9 @@
-package com.ivasi.ecar.users.services.impl;
+package com.ivasi.ecar.users.service.impl;
 
 import com.ivasi.ecar.users.models.AuthorityEntity;
 import com.ivasi.ecar.users.models.UserEntity;
 import com.ivasi.ecar.users.repo.UserRepo;
-import com.ivasi.ecar.users.services.UserService;
+import com.ivasi.ecar.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,6 @@
 package com.ivasi.ecar.users.web;
 
-import com.ivasi.ecar.users.services.UserService;
+import com.ivasi.ecar.users.service.UserService;
 import com.ivasi.ecar.utils.JwtUtils;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;

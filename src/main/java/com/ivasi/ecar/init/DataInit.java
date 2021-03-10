@@ -1,12 +1,9 @@
 package com.ivasi.ecar.init;
 
-import com.ivasi.ecar.users.models.UserEntity;
-import com.ivasi.ecar.users.services.UserService;
+import com.ivasi.ecar.users.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
 
 @Component
 public class DataInit implements CommandLineRunner {

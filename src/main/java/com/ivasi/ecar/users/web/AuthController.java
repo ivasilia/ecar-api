@@ -3,7 +3,7 @@ package com.ivasi.ecar.users.web;
 import com.ivasi.ecar.users.models.Credentials;
 import com.ivasi.ecar.users.models.JwtResponse;
 import com.ivasi.ecar.users.models.UserEntity;
-import com.ivasi.ecar.users.services.UserService;
+import com.ivasi.ecar.users.service.UserService;
 import com.ivasi.ecar.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
