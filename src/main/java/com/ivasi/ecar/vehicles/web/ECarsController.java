@@ -1,6 +1,7 @@
 package com.ivasi.ecar.vehicles.web;
 
 import com.ivasi.ecar.vehicles.models.ECar;
+import com.ivasi.ecar.vehicles.models.dto.ECarExportDto;
 import com.ivasi.ecar.vehicles.service.ECarsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collection;
 
 @RestController
 @RequestMapping("/api/e-cars")
@@ -23,8 +25,8 @@ public class ECarsController {
     }
 
     @GetMapping
-    public String test() {
-        return "Test successful!";
+    public Collection<ECarExportDto> getAll() {
+        return this.eCarsService.getAll();
     }
 
     @PostMapping("/create")
