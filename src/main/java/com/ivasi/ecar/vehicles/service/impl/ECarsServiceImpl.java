@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -37,5 +38,11 @@ public class ECarsServiceImpl implements ECarsService {
         return this.eCarsRepo.findAll().stream()
                 .map(ecar -> this.modelMapper.map(ecar, ECarExportDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public ECarExportDto getById(String id) {
+        return this.modelMapper.map(this.eCarsRepo.findById(id).orElseThrow(() ->
+                new EntityNotFoundException("Item not found")), ECarExportDto.class);
     }
 }

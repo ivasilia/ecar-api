@@ -29,6 +29,12 @@ public class ECarsController {
         return this.eCarsService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public ECarExportDto getById(@PathVariable ("id") String id) {
+
+        return this.eCarsService.getById(id);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<ECar> create(@RequestBody ECar body, Authentication authentication) {
         ECar created = this.eCarsService.create(body);

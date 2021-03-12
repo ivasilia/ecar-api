@@ -9,4 +9,6 @@ public interface ECarsService {
     ECar create(ECar body);
 
     Collection<ECarExportDto> getAll();
+
+    ECarExportDto getById(String id);
 }

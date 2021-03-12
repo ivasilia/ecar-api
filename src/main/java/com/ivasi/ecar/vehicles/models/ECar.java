@@ -10,9 +10,11 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.Duration;
 
 @Entity
+@Table(name = "e_cars")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
