@@ -31,7 +31,6 @@ public class ECarsController {
 
     @GetMapping("/{id}")
     public ECarExportDto getById(@PathVariable ("id") String id) {
-
         return this.eCarsService.getById(id);
     }
 
