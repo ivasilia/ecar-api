@@ -1,9 +1,12 @@
 package com.ivasi.ecar.routes.service;
 
+import com.ivasi.ecar.routes.model.Route;
 import com.ivasi.ecar.routes.repo.RoutesRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Collection;
 
 @Service
 public class RoutesServiceImpl implements RoutesService {
@@ -27,10 +30,28 @@ public class RoutesServiceImpl implements RoutesService {
 
     @Override
     public Double calculateTotalFuel(String routeId) {
-        return Double.parseDouble(
-                this.routesRepo.findById(routeId).orElse(null)
-                        .getDistance()) * GasStation.getDiesel();
+        return this.routesRepo.findById(routeId).orElse(null)
+                        .getDistance() * GasStation.getDiesel();
     }
 
+    @Override
+    public String createRoute(String origin, String destination, double distance) {
+        System.out.println("Here RoutesService: " + origin);
+        Route newRoute = new Route(origin, destination, distance);
+        return this.routesRepo.saveAndFlush(newRoute).getId();   // ---- return ID of create Route ----
+    }
+
+    @Override
+    public Collection<Route> getAll() {
+        return this.routesRepo.findAll();
+    }
+
+    @Override
+    public void initializeRoutes() {
+        if(this.routesRepo.count() == 0) {
+            Route route66 = new Route("Klagenfurt", "Salzburg", 202.8634);
+            this.routesRepo.save(route66);
+        }
+    }
 
 }

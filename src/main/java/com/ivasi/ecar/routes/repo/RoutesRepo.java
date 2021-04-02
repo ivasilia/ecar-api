@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RoutesRepo extends JpaRepository<String, Route> {
+public interface RoutesRepo extends JpaRepository<Route, String> {
     Optional<Route> findById(String routeId);
 }

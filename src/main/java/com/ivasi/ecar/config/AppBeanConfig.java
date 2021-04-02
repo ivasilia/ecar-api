@@ -1,5 +1,6 @@
 package com.ivasi.ecar.config;
 
+import com.ivasi.ecar.routes.gmaps.GoogleMapsHandler;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,5 +24,10 @@ public class AppBeanConfig {
     public ModelMapper modelMapper () {
         return new ModelMapper();
     }
+
+//    @Bean
+//    public GoogleMapsHandler mapsHandler() {
+//        return new GoogleMapsHandler();
+//    }
 
 }
