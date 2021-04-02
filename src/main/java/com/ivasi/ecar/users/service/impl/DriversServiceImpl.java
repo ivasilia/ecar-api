@@ -6,6 +6,7 @@ import com.ivasi.ecar.users.service.DriversService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,5 +41,10 @@ public class DriversServiceImpl implements DriversService {
                     driver1, driver2, driver3, driver4
             ));
         }
+    }
+
+    @Override
+    public Collection<Driver> getAll() {
+        return this.driversRepo.findAll();
     }
 }

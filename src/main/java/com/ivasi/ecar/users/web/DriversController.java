@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/drivers")
 @CrossOrigin(origins = "http://localhost:3000")
@@ -15,6 +17,11 @@ public class DriversController {
     @Autowired
     public DriversController(DriversService driversService) {
         this.driversService = driversService;
+    }
+
+    @GetMapping("/all")
+    public Collection<Driver> getAll() {
+        return this.driversService.getAll();
     }
 
     @GetMapping("/{id}")
