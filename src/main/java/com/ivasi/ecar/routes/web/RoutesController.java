@@ -11,7 +11,7 @@ import java.util.Collection;
 
 @RestController
 @RequestMapping("/routes")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class RoutesController {
     private final RoutesService routesService;
     private final GoogleMapsHandler googleMapsHandler;

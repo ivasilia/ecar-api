@@ -77,6 +77,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 csrf().disable();
     }
 
+
     @Bean
     public UserDetailsService userDetailsService(UserService userService) {
         return username -> {

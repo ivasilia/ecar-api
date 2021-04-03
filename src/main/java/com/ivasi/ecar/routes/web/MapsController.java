@@ -9,7 +9,7 @@ import java.net.URL;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin
 public class MapsController {
 
     private String distanceMatrixApiKey = "AIzaSyDHDbORUyOSxRBZj9flx736bV7mrqglhBM";
