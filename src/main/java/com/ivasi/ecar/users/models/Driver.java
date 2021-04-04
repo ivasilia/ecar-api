@@ -25,6 +25,7 @@ public class Driver {
     @JsonProperty
     @NonNull
     private String name;
+    @JsonProperty
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
@@ -37,6 +38,7 @@ public class Driver {
     @NonNull
     @JsonProperty
     private double consumption;
+    @JsonProperty
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Passenger> passengers;
 
