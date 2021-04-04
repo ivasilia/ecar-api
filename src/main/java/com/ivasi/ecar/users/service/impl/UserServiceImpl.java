@@ -67,4 +67,18 @@ public class UserServiceImpl implements UserService {
         return this.userRepo.findByUsername(username).orElse(null);
     }
 
+    @Override
+    public UserEntity registerUser(String name, String password) {
+        UserEntity user = new UserEntity();
+        user.setUsername(name);
+        user.setPassword(this.encoder.encode(password));
+        user.setActive(true);
+
+        AuthorityEntity authority = new AuthorityEntity();
+        authority.setName("ROLE_USER");
+        authority.setUser(user);
+
+        return this.userRepo.saveAndFlush(user);
+    }
+
 }

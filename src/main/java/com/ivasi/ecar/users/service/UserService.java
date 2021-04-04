@@ -7,5 +7,7 @@ public interface UserService {
 
     UserEntity getUserByUsername(String username);
 
+    UserEntity registerUser(String name, String password);
+
 //    String login(UserLoginDto loginDto);
 }

@@ -48,6 +48,9 @@ public class UserEntity implements UserDetails {
     @Length(min = 1, message = "Enter valid last name!")
     private String lastName;
 
+    @OneToOne(mappedBy = "user")
+    private Driver driver;
+
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)

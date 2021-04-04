@@ -29,4 +29,14 @@ public class DriversController {
         return this.driversService.getById(id);
     }
 
+    @PostMapping("/register")
+    public String register(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestParam("model") String model,
+            @RequestParam("fuel") String fuel,
+            @RequestParam("consumption") double consumption
+    ) {
+        return this.driversService.register(username, password, model, fuel, consumption);
+    }
 }

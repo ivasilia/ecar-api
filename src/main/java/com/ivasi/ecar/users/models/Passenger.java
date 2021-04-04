@@ -24,6 +24,9 @@ public class Passenger {
     @JsonProperty
     @NonNull
     private String name;
+    @OneToOne
+    @JoinColumn(name = "id")
+    private UserEntity user;
     @ManyToMany(mappedBy = "passengers")
     private Set<Driver> drivers;
 }
