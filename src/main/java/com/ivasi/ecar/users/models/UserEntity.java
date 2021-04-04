@@ -1,5 +1,6 @@
 package com.ivasi.ecar.users.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -48,6 +49,7 @@ public class UserEntity implements UserDetails {
     @Length(min = 1, message = "Enter valid last name!")
     private String lastName;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user")
     private Driver driver;
 
