@@ -9,6 +9,7 @@ import lombok.NonNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "drivers")
@@ -22,6 +23,7 @@ public class Driver {
     @JsonProperty
     private String id;
     @JsonProperty
+    @NonNull
     private String name;
     @NonNull
     @JsonProperty
@@ -32,9 +34,8 @@ public class Driver {
     @NonNull
     @JsonProperty
     private double consumption;
-//    @JsonProperty
-//    @ManyToOne
-//    private ECar car;
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Passenger> passengers;
 
 
     public Driver(String name, String model, String fuel, double consumption) {
