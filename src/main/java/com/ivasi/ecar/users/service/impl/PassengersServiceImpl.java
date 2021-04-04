@@ -4,9 +4,11 @@ import com.ivasi.ecar.users.models.Passenger;
 import com.ivasi.ecar.users.repo.PassengersRepo;
 import com.ivasi.ecar.users.service.PassengersService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
+@Service
 public class PassengersServiceImpl implements PassengersService {
     private final PassengersRepo passengersRepo;
 
