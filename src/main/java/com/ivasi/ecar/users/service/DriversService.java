@@ -14,4 +14,6 @@ public interface DriversService {
     Collection<Driver> getAll();
 
     String register(String username, String password, String model, String fuel, double consumption);
+
+    Driver getByUserId(String id);
 }

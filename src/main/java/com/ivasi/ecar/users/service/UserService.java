@@ -9,5 +9,9 @@ public interface UserService {
 
     UserEntity registerUser(String name, String password);
 
+    UserEntity getById(String userId);
+
+    void save(UserEntity user);
+
 //    String login(UserLoginDto loginDto);
 }

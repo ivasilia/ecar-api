@@ -25,8 +25,8 @@ public class DriversController {
     }
 
     @GetMapping("/{id}")
-    public Driver getById(@PathVariable("id") String id) {
-        return this.driversService.getById(id);
+    public Driver getDriverByUserId(@PathVariable("id") String id) {
+        return this.driversService.getByUserId(id);
     }
 
     @PostMapping("/register")

@@ -26,7 +26,7 @@ public class Driver {
     @NonNull
     private String name;
     @JsonProperty
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
     @NonNull

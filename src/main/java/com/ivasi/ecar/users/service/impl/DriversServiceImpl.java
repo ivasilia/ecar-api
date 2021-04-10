@@ -35,14 +35,10 @@ public class DriversServiceImpl implements DriversService {
     @Override
     public void initializeDrivers() {
         if (this.driversRepo.count() == 0) {
-            Driver driver1 = new Driver("Olivia", "Aston Martin", "petrol", 9.5);
-            Driver driver2 = new Driver("Oswald", "Trabant", "petrol", 12);
-            Driver driver3 = new Driver("Mohammed", "Benz", "diesel", 6.2);
-            Driver driver4 = new Driver("Alicia", "Scania", "hydrogene", 2.7);
-
-            this.driversRepo.saveAll(List.of(
-                    driver1, driver2, driver3, driver4
-            ));
+            this.register("Olivia", "olivia", "Aston Martin", "petrol", 9.5);
+            this.register("Dragan", "dragan", "Trabant", "petrol", 12);
+            this.register("Mohammed", "mohammed", "Benz", "diesel", 6.2);
+            this.register("Alicia", "alicia", "Scania", "hydrogene", 2.7);
         }
     }
 
@@ -60,7 +56,15 @@ public class DriversServiceImpl implements DriversService {
             double consumption) {
         UserEntity user = this.userService.registerUser(username, password);
         Driver driver = new Driver(username, model, fuel, consumption);
+        this.userService.save(user);
         driver.setUser(user);
-        return this.driversRepo.save(driver).getId();
+        this.driversRepo.save(driver);
+        return driver.getId();
+    }
+
+    @Override
+    public Driver getByUserId(String userId) {
+        UserEntity user = this.userService.getById(userId);
+        return this.driversRepo.findById(user.getDriver().getId()).orElse(null);
     }
 }

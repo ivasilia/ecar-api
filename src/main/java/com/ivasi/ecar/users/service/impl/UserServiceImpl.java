@@ -81,4 +81,14 @@ public class UserServiceImpl implements UserService {
         return this.userRepo.saveAndFlush(user);
     }
 
+    @Override
+    public UserEntity getById(String userId) {
+        return this.userRepo.findById(userId).orElse(null);
+    }
+
+    @Override
+    public void save(UserEntity user) {
+        this.userRepo.saveAndFlush(user);
+    }
+
 }

@@ -7,10 +7,21 @@ import com.ivasi.ecar.users.service.UserService;
 import com.ivasi.ecar.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Profiles;
+import org.springframework.http.HttpCookie;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/login")
@@ -30,20 +41,24 @@ public class AuthController {
 
     @PostMapping
     public ResponseEntity<JwtResponse> login(
-//            @RequestBody Credentials credentials,
             @RequestParam("username") String username,
             @RequestParam("password") String password
+//            HttpServletResponse response
     ) {
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, password));
-//                        credentials.getUsername(),
-//                        credentials.getPassword()));
 
         final UserEntity user = userService
                 .getUserByUsername(username);
-//                        credentials.getUsername());
         final String token = jwtUtils.generateToken(user);
         log.info("Login successful for {}: {}", user.getUsername(), token);
-        return ResponseEntity.ok(new JwtResponse(token, user));
+
+//        Cookie cookie = new Cookie("jwt", token);
+//        cookie.setHttpOnly(true);
+//        cookie.setMaxAge(1000);
+//        response.addCookie(cookie);
+        return ResponseEntity.ok()
+//                .header(HttpHeaders.WWW_AUTHENTICATE, cookie.toString())
+                .body(new JwtResponse(token, user));
     }
 }
