@@ -1,8 +1,6 @@
 package com.ivasi.ecar.users.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.ivasi.ecar.vehicles.models.ECar;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -26,6 +24,8 @@ public class Driver {
     @NonNull
     private String name;
     @JsonProperty
+    private String imageUrl;
+    @JsonProperty
     @OneToOne()
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private UserEntity user;
@@ -43,8 +43,9 @@ public class Driver {
     private Set<Passenger> passengers;
 
 
-    public Driver(String name, String model, String fuel, double consumption) {
+    public Driver(String name, String imageUrl, String model, String fuel, double consumption) {
         this.name = name;
+        this.imageUrl = imageUrl;
         this.model = model;
         this.fuel = fuel;
         this.consumption = consumption;

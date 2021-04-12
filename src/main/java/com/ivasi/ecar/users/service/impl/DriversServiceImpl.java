@@ -35,10 +35,26 @@ public class DriversServiceImpl implements DriversService {
     @Override
     public void initializeDrivers() {
         if (this.driversRepo.count() == 0) {
-            this.register("Olivia", "olivia", "Aston Martin", "petrol", 9.5);
-            this.register("Dragan", "dragan", "Trabant", "petrol", 12);
-            this.register("Mohammed", "mohammed", "Benz", "diesel", 6.2);
-            this.register("Alicia", "alicia", "Scania", "hydrogene", 2.7);
+            this.register(
+                    "Olivia",
+                    "olivia",
+                    "https://res.cloudinary.com/duvtwfpom/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1598873540/samples/mofa/images/prince-balthasar-velazquez_thumbnail.png",
+                    "Aston Martin", "petrol", 9.5);
+            this.register(
+                    "Dragan",
+                    "dragan",
+                    "https://res.cloudinary.com/duvtwfpom/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1598873536/samples/mofa/images/romanov_thumbnail.jpg",
+                    "Trabant", "petrol", 12);
+            this.register(
+                    "Mohammed",
+                    "mohammed",
+                    "https://res.cloudinary.com/duvtwfpom/image/upload/c_thumb,w_200,g_face/v1598873535/samples/mofa/images/persian-dagger.jpg",
+                    "Benz", "diesel", 6.2);
+            this.register(
+                    "Alicia",
+                    "alicia",
+                    "https://res.cloudinary.com/duvtwfpom/image/upload/w_1000,ar_1:1,c_fill,g_auto/v1598873536/samples/mofa/images/vermeer-girl_thumbnail.jpg",
+                    "Scania", "hydrogene", 2.7);
         }
     }
 
@@ -51,11 +67,12 @@ public class DriversServiceImpl implements DriversService {
     public String register(
             String username,
             String password,
+            String imageUrl,
             String model,
             String fuel,
             double consumption) {
         UserEntity user = this.userService.registerUser(username, password);
-        Driver driver = new Driver(username, model, fuel, consumption);
+        Driver driver = new Driver(username, imageUrl, model, fuel, consumption);
         this.userService.save(user);
         driver.setUser(user);
         this.driversRepo.save(driver);
