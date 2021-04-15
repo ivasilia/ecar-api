@@ -53,6 +53,10 @@ public class UserEntity implements UserDetails {
     @OneToOne(mappedBy = "user")
     private Driver driver;
 
+    @JsonIgnore
+    @OneToOne(mappedBy = "user")
+    private Driver passenger;
+
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
