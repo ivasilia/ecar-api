@@ -27,6 +27,9 @@ public class Route {
     @JsonProperty
     private String id;
     @NonNull
+    @JsonProperty
+    private String driversId;
+    @NonNull
     private String origin;
     @NonNull
     private String destination;

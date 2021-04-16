@@ -54,4 +54,9 @@ public class RoutesServiceImpl implements RoutesService {
         }
     }
 
+    @Override
+    public Route getById(String id) {
+        return this.routesRepo.findById(id).orElse(null);
+    }
+
 }

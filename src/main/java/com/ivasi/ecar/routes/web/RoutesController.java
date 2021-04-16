@@ -34,6 +34,11 @@ public class RoutesController {
         return this.routesService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public Route getById(@PathVariable("id") String id) {
+        return this.routesService.getById(id);
+    }
+
     @PostMapping("/create")
     public String createRoute(
             @RequestParam("origin") String origin,

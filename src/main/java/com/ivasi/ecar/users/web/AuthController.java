@@ -1,27 +1,15 @@
 package com.ivasi.ecar.users.web;
 
-import com.ivasi.ecar.users.models.Credentials;
 import com.ivasi.ecar.users.models.JwtResponse;
 import com.ivasi.ecar.users.models.UserEntity;
 import com.ivasi.ecar.users.service.UserService;
 import com.ivasi.ecar.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Profiles;
-import org.springframework.http.HttpCookie;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/login")

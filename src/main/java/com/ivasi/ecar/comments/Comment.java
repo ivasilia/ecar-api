@@ -7,10 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "comments")
@@ -26,6 +23,7 @@ public class Comment {
     @JsonProperty
     private String title;
     @JsonProperty
+    @Column(columnDefinition = "VARCHAR (2048)")
     private String content;
 
     public Comment(String title, String content) {

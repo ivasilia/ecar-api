@@ -55,7 +55,7 @@ public class UserEntity implements UserDetails {
 
     @JsonIgnore
     @OneToOne(mappedBy = "user")
-    private Driver passenger;
+    private Passenger passenger;
 
     @OneToMany(mappedBy = "user",
             cascade = CascadeType.ALL,

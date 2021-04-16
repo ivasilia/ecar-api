@@ -13,4 +13,6 @@ public interface RoutesService {
     Collection<Route> getAll();
 
     void initializeRoutes();
+
+    Route getById(String id);
 }

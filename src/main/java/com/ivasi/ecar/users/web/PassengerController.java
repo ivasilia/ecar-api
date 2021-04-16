@@ -25,8 +25,15 @@ public class PassengerController {
     }
 
     @GetMapping("/{id}")
-    public Passenger getById(@PathVariable("id") String id) {
-        return this.passengersService.getById(id);
+    public Passenger getByUserId(@PathVariable("id") String id) {
+        return this.passengersService.getByUserId(id);
     }
 
+    @PostMapping("/register")
+    public String register(
+            @RequestParam("username") String username,
+            @RequestParam("password") String password,
+            @RequestParam("imageUrl") String imageUrl) {
+        return this.passengersService.register(username, password, imageUrl);
+    }
 }
