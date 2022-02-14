@@ -43,8 +43,17 @@ public class RoutesController {
     public String createRoute(
             @RequestParam("origin") String origin,
             @RequestParam("destination") String destination,
-            @RequestParam("distance") double distance
+            @RequestParam("distance") double distance,
+            @RequestParam("driverId") String driverId
             ) {
-        return this.routesService.createRoute(origin, destination, distance);
+        return this.routesService.createRoute(origin, destination, distance, driverId);
+    }
+
+    @PostMapping("/add-passenger")
+    public int addPassenger(
+            @RequestParam("routeId") String routeId,
+            @RequestParam("passengerId") String passengerId
+    ) {
+        return this.routesService.addPassengerToRoute(routeId, passengerId);
     }
 }

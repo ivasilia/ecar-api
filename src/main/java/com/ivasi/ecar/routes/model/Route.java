@@ -37,11 +37,12 @@ public class Route {
     private double fuelPrice;
     private int passengersCount;
 
-    public Route(String origin, String destination, double distance) {
+    public Route(String origin, String destination, double distance, String driversId) {
 
         this.origin = origin;
         this.destination = destination;
         this.distance = distance;
+        this.driversId = driversId;
         this.setFuelPrice();
     }
 

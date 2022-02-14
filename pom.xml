@@ -12,7 +12,7 @@
     <artifactId>ecar-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ecar-api</name>
-    <description>E-car sharing management api</description>
+    <description>Car sharing management api</description>
     <properties>
         <java.version>11</java.version>
     </properties>

@@ -35,9 +35,9 @@ public class RoutesServiceImpl implements RoutesService {
     }
 
     @Override
-    public String createRoute(String origin, String destination, double distance) {
+    public String createRoute(String origin, String destination, double distance, String driverId) {
         System.out.println("Here RoutesService: " + origin);
-        Route newRoute = new Route(origin, destination, distance);
+        Route newRoute = new Route(origin, destination, distance, driverId);
         return this.routesRepo.saveAndFlush(newRoute).getId();   // ---- return ID of create Route ----
     }
 
@@ -49,7 +49,7 @@ public class RoutesServiceImpl implements RoutesService {
     @Override
     public void initializeRoutes() {
         if(this.routesRepo.count() == 0) {
-            Route route66 = new Route("Klagenfurt", "Salzburg", 202.8634);
+            Route route66 = new Route("Klagenfurt", "Salzburg", 202.8634, "admin");
             this.routesRepo.save(route66);
         }
     }
@@ -57,6 +57,15 @@ public class RoutesServiceImpl implements RoutesService {
     @Override
     public Route getById(String id) {
         return this.routesRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public int addPassengerToRoute(String routeId, String passengerId) {
+        // --- For now just increasing the number of passengers ----
+        Route route = this.routesRepo.findById(routeId).orElse(null);
+        route.setPassengersCount(route.getPassengersCount() + 1);
+        this.routesRepo.saveAndFlush(route);
+        return route.getPassengersCount();
     }
 
 }
